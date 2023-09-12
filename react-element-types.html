@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Element types</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- <script type="text/babel">
+    // function bắt buộc phải viết hoa chữ cái đầu
+    function Header() {
+      return (
+        <div className="header">Header</div>
+      )
+    }
+
+    class Content extends React.Component {
+      render() {
+        return (
+          <div className="content">Content</div>
+        )
+      }
+    }
+
+    const app = (
+      <div className="wrapper">
+        <Header />
+        <Content />
+        <div className="footer">Footer</div>
+      </div>
+    )
+
+    ReactDOM.render(app, document.getElementById("app"))
+  </script> -->
+
+  <script type="text/babel">
+    // đặt tên param là gì cũng dc
+    function PostItem(props) {
+      if (typeof props.myCallback === 'function') {
+        props.myCallback(Math.random())
+      }
+
+      return (
+        <div className="post-item">
+          <h2>{props.title}</h2>
+          <p>{props.description}</p>
+          <p>{props.publishedAt}</p>
+        </div>
+      )
+    }
+
+    // tach ra file App.js
+    function App() {
+      return (
+        <div id="wrapper">
+          <PostItem
+            title="C#(.NET)"
+            description="Co kien thuc ve ngon ngu C#"
+            publishedAt="Mot ngay truoc - 1 phut truoc"
+            myCallback={
+              (random) => {
+                console.log(random)
+              }
+            }
+          />
+          <PostItem
+            title="Java Springboot"
+            description="Bean, Spring Security, Themeleaf, ..."
+            publishedAt="Hai ngay truoc - 2 phut truoc"
+          />
+          <PostItem
+            title="Ruby"
+            description="Ruby on Rails"
+            publishedAt="Ba ngay truoc - 3 phut truoc"
+          />
+        </div>
+      )
+    }
+
+    // tach ra file index.js
+    ReactDOM.render(<App />, document.getElementById("app"))
+  </script>
+</body>
+</html>
